@@ -19,8 +19,11 @@ export class TranslateService {
       submitButton: 'Inserisci',
       currencyPlaceholder: 'Seleziona una valuta',
       choicePlaceholder: 'Scegli tipo causale',
-      acquisto: 'Acquisto',
-      vendita: 'Vendita',
+      purchase: 'Acquisto',
+      sale: 'Vendita',
+      requiredField: 'Il campo è obbligatorio',
+      numericDecimalError: 'Puoi inserire un massimo di 4 decimali',
+      numericIntegerError: 'Puoi inserire soltanto numeri interi',
     },
     inglese: {
       language: 'Language',
@@ -36,8 +39,11 @@ export class TranslateService {
       submitButton: 'Submit',
       currencyPlaceholder: 'Select a currency',
       choicePlaceholder: 'Choose cause type',
-      acquisto: 'Purchase',
-      vendita: 'Sale',
+      purchase: 'Purchase',
+      sale: 'Sale',
+      requiredField: 'Required field',
+      numericDecimalError: 'You can enter a maximum of 4 decimals',
+      numericIntegerError: 'You can only insert integers',
     },
   };
 

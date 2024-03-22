@@ -31,8 +31,8 @@ export class AppComponent {
       choice: ['', Validators.required],
       date: ['', Validators.required],
       tool: ['', Validators.required],
-      quantity: ['', Validators.required],
-      price: ['', Validators.required],
+      quantity: ['', [Validators.required, Validators.pattern(/^[0-9]*$/)]],
+      price: ['', [Validators.required, Validators.pattern(/^\d+(\.\d{1,4})?$/)]],
       total: ['', Validators.required],
     });
   }

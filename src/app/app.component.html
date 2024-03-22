@@ -1,7 +1,5 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <label for="language" class="form-label">{{
-    translate("language")
-  }}</label>
+  <label for="language" class="form-label">{{ translate("language") }}</label>
   <select [formControl]="languageControl" id="language" name="language">
     <option value="italiano">{{ translate("italian") }}</option>
     <option value="inglese">{{ translate("english") }}</option>
@@ -25,6 +23,12 @@
         <option value="USD">USD</option>
         <option value="EUR">EUR</option>
       </select>
+      <div
+        *ngIf="form.get('currency')?.invalid && form.get('currency')?.touched"
+        class="text-danger"
+      >
+        {{ translate("requiredField") }}
+      </div>
     </div>
 
     <div class="mb-3 border border-gray">
@@ -39,9 +43,16 @@
         required
       >
         <option value="">{{ translate("choicePlaceholder") }}</option>
-        <option value="acquisto">{{ translate("acquisto") }}</option>
-        <option value="vendita">{{ translate("vendita") }}</option>
+        <option value="acquisto">{{ translate("purchase") }}</option>
+        <option value="vendita">{{ translate("sale") }}</option>
       </select>
+
+      <div
+        *ngIf="form.get('choice')?.invalid && form.get('choice')?.touched"
+        class="text-danger"
+      >
+        {{ translate("requiredField") }}
+      </div>
     </div>
 
     <div class="mb-3">
@@ -54,6 +65,12 @@
         name="date"
         required
       />
+      <div
+        *ngIf="form.get('date')?.invalid && form.get('date')?.touched"
+        class="text-danger"
+      >
+        {{ translate("requiredField") }}
+      </div>
     </div>
 
     <div class="mb-3">
@@ -66,6 +83,12 @@
         name="tool"
         required
       />
+      <div
+        *ngIf="form.get('tool')?.invalid && form.get('tool')?.touched"
+        class="text-danger"
+      >
+        {{ translate("requiredField") }}
+      </div>
     </div>
 
     <div class="mb-3">
@@ -80,6 +103,18 @@
         name="quantity"
         required
       />
+      <div
+        *ngIf="form.get('quantity')?.invalid && form.get('quantity')?.touched"
+        class="text-danger"
+      >
+        {{ translate("requiredField") }}
+      </div>
+      <div
+        *ngIf="form.get('quantity')?.errors?.['pattern']"
+        class="text-danger"
+      >
+        {{ translate("numericIntegerError") }}
+      </div>
     </div>
 
     <div class="mb-3">
@@ -95,6 +130,15 @@
         step="0.0001"
         required
       />
+      <div
+        *ngIf="form.get('price')?.invalid && form.get('price')?.touched"
+        class="text-danger"
+      >
+        {{ translate("requiredField") }}
+      </div>
+      <div *ngIf="form.get('price')?.errors?.['pattern']" class="text-danger">
+        {{ translate("numericDecimalError") }}
+      </div>
     </div>
 
     <div class="mb-3">
@@ -112,7 +156,7 @@
       />
     </div>
 
-    <button type="submit" class="btn btn-success">
+    <button type="submit" class="btn btn-success" [disabled]="form.invalid">
       {{ translate("submitButton") }}
     </button>
   </form>
