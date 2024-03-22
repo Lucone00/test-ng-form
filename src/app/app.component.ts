@@ -22,10 +22,7 @@ export class AppComponent {
       currency: ['', Validators.required],
       choice: ['', Validators.required],
       date: ['', Validators.required],
-      text: ['', Validators.required],
-      integer: ['', Validators.required],
-      float: ['', Validators.required],
-      quantity: ['', Validators.required],
+      tool: ['', Validators.required],
       price: ['', Validators.required],
     });
   }

@@ -1,7 +1,9 @@
 <div class="container p-5">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="mb-3">
-      <label for="currency" class="form-label border border-gray">Valuta</label>
+      <label for="currency" class="form-label border border-gray"
+        >Valuta del portafoglio</label
+      >
       <select
         formControlName="currency"
         class="form-select"
@@ -16,7 +18,7 @@
     </div>
 
     <div class="mb-3 border border-gray">
-      <label for="choice" class="form-label">Scelta</label>
+      <label for="choice" class="form-label">Tipo causale</label>
       <select
         formControlName="choice"
         class="form-select"
@@ -24,14 +26,14 @@
         name="choice"
         required
       >
-        <option value="">Seleziona una scelta</option>
-        <option value="opzione1">Opzione 1</option>
-        <option value="opzione2">Opzione 2</option>
+        <option value="">Scegli tipo causale</option>
+        <option value="opzione1">Acquisto</option>
+        <option value="opzione2">Vendita</option>
       </select>
     </div>
 
     <div class="mb-3">
-      <label for="date" class="form-label">Data</label>
+      <label for="date" class="form-label">Data operazione</label>
       <input
         formControlName="date"
         type="date"
@@ -43,39 +45,13 @@
     </div>
 
     <div class="mb-3">
-      <label for="text" class="form-label">Testo libero</label>
+      <label for="text" class="form-label">Strumento</label>
       <input
-        formControlName="text"
+        formControlName="tool"
         type="text"
         class="form-control"
-        id="text"
-        name="text"
-        required
-      />
-    </div>
-
-    <div class="mb-3">
-      <label for="integer" class="form-label">Numero intero</label>
-      <input
-        formControlName="integer"
-        type="number"
-        class="form-control"
-        id="integer"
-        name="integer"
-        step="1"
-        required
-      />
-    </div>
-
-    <div class="mb-3">
-      <label for="float" class="form-label">Numero float (4 decimali)</label>
-      <input
-        formControlName="float"
-        type="number"
-        class="form-control"
-        id="float"
-        name="float"
-        step="0.0001"
+        id="tool"
+        name="tool"
         required
       />
     </div>
@@ -100,12 +76,13 @@
         class="form-control"
         id="price"
         name="price"
+        step="0.0001"
         required
       />
     </div>
 
     <div class="mb-3">
-      <label for="total" class="form-label">Totale (calcolato)</label>
+      <label for="total" class="form-label">Importo</label>
       <input
         formControlName="total"
         type="number"
@@ -117,6 +94,6 @@
       />
     </div>
 
-    <button type="submit" class="btn btn-primary">Invia</button>
+    <button type="submit" class="btn btn-success">Inserisci</button>
   </form>
 </div>
