@@ -15,6 +15,7 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.createForm();
+    this.subscribeToFormChanges();
   }
 
   createForm(): void {
@@ -23,14 +24,27 @@ export class AppComponent {
       choice: ['', Validators.required],
       date: ['', Validators.required],
       tool: ['', Validators.required],
+      quantity: ['', Validators.required],
       price: ['', Validators.required],
+      total: ['', Validators.required],
     });
   }
 
-  calculateTotal(): number {
-    const quantity = this.form.get('quantity')?.value ?? 0;
-    const price = this.form.get('price')?.value ?? 0;
-    return quantity * price;
+  subscribeToFormChanges(): void {
+    this.form.get('quantity')?.valueChanges.subscribe(() => {
+      this.updateTotal();
+    });
+
+    this.form.get('price')?.valueChanges.subscribe(() => {
+      this.updateTotal();
+    });
+  }
+
+  updateTotal(): void {
+    const quantity = this.form.get('quantity')?.value || 0;
+    const price = this.form.get('price')?.value || 0;
+    const total = quantity * price;
+    this.form.patchValue({ total });
   }
 
   onSubmit() {

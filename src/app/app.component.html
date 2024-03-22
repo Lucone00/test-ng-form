@@ -27,8 +27,8 @@
         required
       >
         <option value="">Scegli tipo causale</option>
-        <option value="opzione1">Acquisto</option>
-        <option value="opzione2">Vendita</option>
+        <option value="acquisto">Acquisto</option>
+        <option value="vendita">Vendita</option>
       </select>
     </div>
 
@@ -45,7 +45,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="text" class="form-label">Strumento</label>
+      <label for="tool" class="form-label">Strumento</label>
       <input
         formControlName="tool"
         type="text"
@@ -90,7 +90,7 @@
         id="total"
         name="total"
         [readonly]="true"
-        [value]="calculateTotal()"
+        [value]="updateTotal()"
       />
     </div>
 
