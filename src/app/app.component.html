@@ -1,18 +1,29 @@
 <div class="container p-5">
-  <form>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="mb-3">
       <label for="currency" class="form-label border border-gray">Valuta</label>
-      <select class="form-select" id="currency" name="currency" required>
+      <select
+        formControlName="currency"
+        class="form-select"
+        id="currency"
+        name="currency"
+        required
+      >
         <option value="">Seleziona una valuta</option>
         <option value="USD">USD</option>
         <option value="EUR">EUR</option>
-        <option value="GBP">GBP</option>
       </select>
     </div>
 
-    <div class="mb-3  border border-gray">
+    <div class="mb-3 border border-gray">
       <label for="choice" class="form-label">Scelta</label>
-      <select class="form-select" id="choice" name="choice" required>
+      <select
+        formControlName="choice"
+        class="form-select"
+        id="choice"
+        name="choice"
+        required
+      >
         <option value="">Seleziona una scelta</option>
         <option value="opzione1">Opzione 1</option>
         <option value="opzione2">Opzione 2</option>
@@ -21,17 +32,32 @@
 
     <div class="mb-3">
       <label for="date" class="form-label">Data</label>
-      <input type="date" class="form-control" id="date" name="date" required />
+      <input
+        formControlName="date"
+        type="date"
+        class="form-control"
+        id="date"
+        name="date"
+        required
+      />
     </div>
 
     <div class="mb-3">
       <label for="text" class="form-label">Testo libero</label>
-      <input type="text" class="form-control" id="text" name="text" required />
+      <input
+        formControlName="text"
+        type="text"
+        class="form-control"
+        id="text"
+        name="text"
+        required
+      />
     </div>
 
     <div class="mb-3">
       <label for="integer" class="form-label">Numero intero</label>
       <input
+        formControlName="integer"
         type="number"
         class="form-control"
         id="integer"
@@ -44,6 +70,7 @@
     <div class="mb-3">
       <label for="float" class="form-label">Numero float (4 decimali)</label>
       <input
+        formControlName="float"
         type="number"
         class="form-control"
         id="float"
@@ -56,25 +83,31 @@
     <div class="mb-3">
       <label for="quantity" class="form-label">Quantità</label>
       <input
+        formControlName="quantity"
         type="number"
         class="form-control"
         id="quantity"
         name="quantity"
         required
       />
+    </div>
 
+    <div class="mb-3">
       <label for="price" class="form-label">Prezzo</label>
       <input
+        formControlName="price"
         type="number"
         class="form-control"
         id="price"
         name="price"
         required
       />
+    </div>
 
+    <div class="mb-3">
       <label for="total" class="form-label">Totale (calcolato)</label>
-
       <input
+        formControlName="total"
         type="number"
         class="form-control"
         id="total"
