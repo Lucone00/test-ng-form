@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { TranslateService } from './services/translate.service';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ export class AppComponent {
   form!: FormGroup;
   languageControl: FormControl = new FormControl('italiano');
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private translateService: TranslateService) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -54,9 +55,12 @@ export class AppComponent {
   }
 
   onSubmit() {
-    console.log('Form submitted');
     console.log(this.form.value);
     console.log(this.languageControl.value);
+  }
+
+  translate(key: string): string {
+    return this.translateService.translate(key, this.languageControl.value);
   }
   
 }

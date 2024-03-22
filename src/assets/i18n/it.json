@@ -1,0 +1,13 @@
+{
+  "navbar.language": "Lingua",
+  "currency.label": "Valuta del portafoglio",
+  "currency.placeholder": "Seleziona una valuta",
+  "choice.label": "Tipo causale",
+  "choice.placeholder": "Scegli tipo causale",
+  "date.label": "Data operazione",
+  "tool.label": "Strumento",
+  "quantity.label": "Quantità",
+  "price.label": "Prezzo",
+  "total.label": "Importo",
+  "button.submit": "Inserisci"
+}

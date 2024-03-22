@@ -1,17 +1,19 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <label for="language" class="form-label">Lingua</label>
+  <label for="language" class="form-label">{{
+    translate("language")
+  }}</label>
   <select [formControl]="languageControl" id="language" name="language">
-    <option value="italiano">Italiano</option>
-    <option value="inglese">Inglese</option>
+    <option value="italiano">{{ translate("italian") }}</option>
+    <option value="inglese">{{ translate("english") }}</option>
   </select>
 </nav>
 
 <div class="container p-5">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="mb-3">
-      <label for="currency" class="form-label border border-gray"
-        >Valuta del portafoglio</label
-      >
+      <label for="currency" class="form-label border border-gray">{{
+        translate("currencyLabel")
+      }}</label>
       <select
         formControlName="currency"
         class="form-select"
@@ -19,14 +21,16 @@
         name="currency"
         required
       >
-        <option value="">Seleziona una valuta</option>
+        <option value="">{{ translate("currencyPlaceholder") }}</option>
         <option value="USD">USD</option>
         <option value="EUR">EUR</option>
       </select>
     </div>
 
     <div class="mb-3 border border-gray">
-      <label for="choice" class="form-label">Tipo causale</label>
+      <label for="choice" class="form-label">{{
+        translate("choiceLabel")
+      }}</label>
       <select
         formControlName="choice"
         class="form-select"
@@ -34,14 +38,14 @@
         name="choice"
         required
       >
-        <option value="">Scegli tipo causale</option>
-        <option value="acquisto">Acquisto</option>
-        <option value="vendita">Vendita</option>
+        <option value="">{{ translate("choicePlaceholder") }}</option>
+        <option value="acquisto">{{ translate("acquisto") }}</option>
+        <option value="vendita">{{ translate("vendita") }}</option>
       </select>
     </div>
 
     <div class="mb-3">
-      <label for="date" class="form-label">Data operazione</label>
+      <label for="date" class="form-label">{{ translate("dateLabel") }}</label>
       <input
         formControlName="date"
         type="date"
@@ -53,7 +57,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="tool" class="form-label">Strumento</label>
+      <label for="tool" class="form-label">{{ translate("toolLabel") }}</label>
       <input
         formControlName="tool"
         type="text"
@@ -65,7 +69,9 @@
     </div>
 
     <div class="mb-3">
-      <label for="quantity" class="form-label">Quantità</label>
+      <label for="quantity" class="form-label">{{
+        translate("quantityLabel")
+      }}</label>
       <input
         formControlName="quantity"
         type="number"
@@ -77,7 +83,9 @@
     </div>
 
     <div class="mb-3">
-      <label for="price" class="form-label">Prezzo</label>
+      <label for="price" class="form-label">{{
+        translate("priceLabel")
+      }}</label>
       <input
         formControlName="price"
         type="number"
@@ -90,7 +98,9 @@
     </div>
 
     <div class="mb-3">
-      <label for="total" class="form-label">Importo</label>
+      <label for="total" class="form-label">{{
+        translate("totalLabel")
+      }}</label>
       <input
         formControlName="total"
         type="number"
@@ -102,6 +112,8 @@
       />
     </div>
 
-    <button type="submit" class="btn btn-success">Inserisci</button>
+    <button type="submit" class="btn btn-success">
+      {{ translate("submitButton") }}
+    </button>
   </form>
 </div>
