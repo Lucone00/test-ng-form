@@ -6,6 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { TranslateService } from './services/translate.service';
+import { FormSubmitService } from './services/form-submit.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +19,13 @@ export class AppComponent {
 
   form!: FormGroup;
   languageControl: FormControl = new FormControl('italiano');
+  private formSubmitSubscription?: Subscription;
 
-  constructor(private fb: FormBuilder, private translateService: TranslateService) {}
+  constructor(
+    private fb: FormBuilder,
+    private translateService: TranslateService,
+    private formSubmitService: FormSubmitService
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -32,7 +39,10 @@ export class AppComponent {
       date: ['', Validators.required],
       tool: ['', Validators.required],
       quantity: ['', [Validators.required, Validators.pattern(/^[0-9]*$/)]],
-      price: ['', [Validators.required, Validators.pattern(/^\d+(\.\d{1,4})?$/)]],
+      price: [
+        '',
+        [Validators.required, Validators.pattern(/^\d+(\.\d{1,4})?$/)],
+      ],
       total: ['', Validators.required],
     });
   }
@@ -55,12 +65,31 @@ export class AppComponent {
   }
 
   onSubmit() {
-    console.log(this.form.value);
-    console.log(this.languageControl.value);
+    if (this.form.invalid) {
+      return;
+    }
+
+    const formData = this.form.value;
+    this.formSubmitSubscription = this.formSubmitService
+      .submitFormData(formData)
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          this.form.reset();
+        },
+        error: (error) => {
+          console.error("Errore durante l'invio dei dati:", error);
+        },
+      });
   }
 
   translate(key: string): string {
     return this.translateService.translate(key, this.languageControl.value);
   }
-  
+
+  ngOnDestroy(): void {
+    if (this.formSubmitSubscription) {
+      this.formSubmitSubscription.unsubscribe();
+    }
+  }
 }
