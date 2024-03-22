@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +15,7 @@ export class AppComponent {
   title = 'test-ng-form';
 
   form!: FormGroup;
+  languageControl: FormControl = new FormControl('italiano');
 
   constructor(private fb: FormBuilder) {}
 
@@ -50,5 +56,7 @@ export class AppComponent {
   onSubmit() {
     console.log('Form submitted');
     console.log(this.form.value);
+    console.log(this.languageControl.value);
   }
+  
 }
